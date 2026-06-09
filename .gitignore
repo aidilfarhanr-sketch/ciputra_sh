@@ -1,0 +1,28 @@
+# Config sensitif
+api/config.local.php
+api/config.production.php
+.env
+*.env
+
+# Logs, backup, temporary
+logs/*.log
+backups/*.sql
+backups/*.zip
+cache/*
+tmp/*
+*.tmp
+*.bak
+*.backup
+
+# Upload production berisi data/foto asli
+uploads/temuan/*
+uploads/jawaban/*
+!uploads/temuan/.gitkeep
+!uploads/jawaban/.gitkeep
+!uploads/.htaccess
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

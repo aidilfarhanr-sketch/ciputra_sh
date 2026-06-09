@@ -1,0 +1,28 @@
+name: Ciputra SH-1 PHP CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  syntax-and-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: PHP syntax check
+        run: |
+          find . -name "*.php" -not -path "*/vendor/*" -print0 | xargs -0 -n1 php -l
+      - name: Required files check
+        run: |
+          test -f index.php
+          test -f api/config.php
+          test -f api/config.example.php
+          test -f database_install_full.sql
+          test -f migration_upgrade_to_85.sql
+          test -d uploads
+          test -d logs
+          test -d backups
